@@ -13,7 +13,10 @@ function Books() {
   const [formObject, setFormObject] = useState({
     title:"",
     author:"",
-    synopsis:""
+    synopsis:"",
+    averageRating: 0,
+    image: '',
+    selfLink: '',
   })
 
   // Load all books and store them with setBooks
@@ -23,7 +26,7 @@ function Books() {
 
   // Loads all books and sets them to books
   function loadBooks() {
-    API.getBooks()
+    API.getSavedBooks()
       .then(res => 
         setBooks(res.data)
       )
@@ -57,7 +60,10 @@ function Books() {
           setFormObject({
             title:"",
             author:"",
-            synposis:""
+            synposis:"",
+            averageRating: 0,
+            image: '',
+            selfLink: '',
           })
           loadBooks()
         })
