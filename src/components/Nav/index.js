@@ -4,8 +4,9 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        React Reading List
+        Reading List
       </a>
+      <a className="navbar-brand" href='/search'>Search</a>
     </nav>
   );
 }

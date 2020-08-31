@@ -9,10 +9,10 @@ function Detail(props) {
 
   // When this component mounts, grab the book with the _id of props.match.params.id
   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-  const { name } = useParams()
+  const { id } = useParams()
   useEffect(() => {
-    API.getBookByName(name)
-      .then(res => setBook(res.data))
+    API.getBookById(id)
+      .then(res => setBook(res.data[0]))
       .catch(err => console.log(err));
   }, [])
 
@@ -27,16 +27,21 @@ function Detail(props) {
           </Jumbotron>
         </Col>
       </Row>
+
       <Row>
-        <Col size="md-10 md-offset-1">
-          <article>
+        <article>
+          <Col size="md-6 sm-12">
+            <img src={book.image} alt={book.title}></img>
+            <p>{book.averageRating} ⭐</p>
+          </Col>
+          <Col size="md-6 sm-12">
+
             <h1>Synopsis</h1>
-            <p>
-              {book.synopsis}
-            </p>
-          </article>
-        </Col>
+            <p>{book.synopsis}</p>
+          </Col>
+        </article>
       </Row>
+
       <Row>
         <Col size="md-2">
           <Link to="/">← Back to Authors</Link>
