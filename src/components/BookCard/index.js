@@ -7,13 +7,13 @@ function BookCard({ img, title, author, synopsis, averageRating, selfLink, saveB
     <>
       <div style={{ margin: "2rem" }}>
         <div className="card-body">
-          <img src={img} alt={title} />
+          <a href={selfLink}><img src={img} alt={title} /></a>
           <p className='card-text'>{averageRating}⭐</p>
-          <h5 className="card-title">{title}</h5>
+          <a href={selfLink}><h5 className="card-title">{title}</h5></a>
           <p className="card-text">{author}</p>
           <p className="card-text">{synopsis}</p>
-          <p className="card-text">{selfLink}</p>
-          <button className="btn btn-primary" id={id} onClick={saveBook}>Save</button>
+          <button className="btn btn-primary mr-2" id={id} onClick={saveBook}>Save</button>
+          <a href={selfLink}><button className='btn btn-primary ml-2'>Google Play</button></a>
         </div>
       </div>
     </>

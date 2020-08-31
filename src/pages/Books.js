@@ -76,64 +76,31 @@ function Books() {
   return (
     <Container fluid>
       <Row>
-        <Col size="md-6">
+        <Col size="md-12 sm-12">
           <Jumbotron>
-            <h1>What Books Should I Read?</h1>
+            <h1>Saved Books</h1>
           </Jumbotron>
-          <form>
-            <Input
-              onChange={handleInputChange}
-              value={formObject.title}
-              name="title"
-              placeholder="Title (required)"
-            />
-            <FormBtn
-              disabled={!(formObject.title)}
-              onClick={handleFormSubmit}
-            >
-              Search Google Books
-              </FormBtn>
-          </form>
-        </Col>
-        <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Books On My List</h1>
-          </Jumbotron>
-          {books.length ? (
-            <List>
-              {books.map(book => (
-                <ListItem key={book._id}>
-                  <Link to={"/books/" + book._id}>
-                    <strong>
-                      {book.title} by {book.author}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteBook(book._id)} />
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-              <h3>No Results to Display</h3>
-            )}
+          <div className='container'>
+
+            {books.length ? (
+              <List>
+                {books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <strong>
+                        {book.title} by {book.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+                <h3>No Results to Display</h3>
+              )}
+          </div>
         </Col>
       </Row>
-      {googleBooks.length ? (
-        <>
-          {googleBooks.map(book => <BookCard
-            key={book.id}
-            img={book.volumeInfo.imageLinks.thumbnail}
-            title={book.volumeInfo.title}
-            author={book.volumeInfo.authors}
-            synopsis={book.volumeInfo.description}
-            averageRating={book.volumeInfo.averageRating}
-            selfLink={book.volumeInfo.selfLink}
-            id={book.id}
-            saveBook={saveBook}
-          />)}
-        </>
-      ) : (
-          <h3>No Results to Display</h3>
-        )}
     </Container>
   );
 }
