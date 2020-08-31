@@ -27,13 +27,12 @@ function Detail(props) {
           </Jumbotron>
         </Col>
       </Row>
-      {/* <div className='container'> */}
-      <Container>
-
+      <div className='container'>
+      
       <Row>
         <article>
           <Col size="md-12 sm-12">
-            <img src={book.image} alt={book.title}></img>
+            <a href={book.selfLink}><img src={book.image} alt={book.title}></img></a>
             <p>{book.averageRating} ⭐</p>
           </Col>
           <Col size="md-12 sm-12">
@@ -49,8 +48,7 @@ function Detail(props) {
           <Link to="/">← Back</Link>
         </Col>
       </Row>
-      </Container>
-      {/* </div> */}
+      </div>
     </Container>
   );
 }
